@@ -1,0 +1,19 @@
+server:
+  port: 8080
+  context-path: /DrawAndGuess
+
+#非严格的thymeleaf格式 ,禁用模版缓存
+spring:
+  thymeleaf:
+    mode: LEGACYHTML5
+    cache: false
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/test
+    username: root
+    password: 123456
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
