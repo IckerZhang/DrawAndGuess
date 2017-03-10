@@ -1,7 +1,8 @@
-package com.lyuke.main;
+package com.lyuke;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 
 
 /**
@@ -11,7 +12,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 @SpringBootApplication
 public class DrawAndGuessApplication {
-
 	public static void main(String[] args) {
 		SpringApplication.run(DrawAndGuessApplication.class, args);
 	}
