@@ -1,6 +1,6 @@
 server:
   port: 8080
-  context-path: /DrawAndGuess
+  context-path: /dg
 
 #非严格的thymeleaf格式 ,禁用模版缓存
 spring:

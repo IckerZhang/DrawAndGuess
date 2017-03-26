@@ -22,11 +22,13 @@
 			<th>编号</th>
 			<th>姓名</th>
 			<th>密码</th>
+			<th>地址</th>
 		</tr>
 		<tr th:each="user:${list}">
 			<td th:text="${user.id}"></td>
 			<td th:text="${user.name}"></td>
 			<td th:text="${user.password}"></td>
+			<td th:text="${user.address}?${user.address.des}:'默认'"></td>
 		</tr>
 	</table>
 </body>

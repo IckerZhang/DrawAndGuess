@@ -1,5 +1,6 @@
 package com.lyuke.test;
 
+import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,7 +27,14 @@ public class HelloController {
 	@RequestMapping("/userlist")
 	public ModelAndView userList(){
 		ModelAndView m = new ModelAndView();
-		m.addObject("list", userRepository.findAll());
+		List<User> userlist = userRepository.findAll();
+		User user = new User();
+		user.setAddress(null);
+		user.setName("测试");
+		user.setPassword("11111");
+		user.setAge(12);
+		//userRepository.save(user);
+		m.addObject("list", userlist);
 		m.setViewName("demo/list");
 		return m;
 		
