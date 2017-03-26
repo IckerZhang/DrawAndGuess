@@ -9,7 +9,7 @@ spring:
     cache: false
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/test
+    url: jdbc:mysql://localhost:3306/dg_schema
     username: root
     password: 123456
   jpa:
