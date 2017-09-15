@@ -13,16 +13,19 @@ import javax.persistence.Table;
 @Table(name = "t_users")
 public class User {
 	@Id
-	@Column(name="users_id")
+	@Column(name = "users_id")
 	private String userId;
-	
-	@Column(name="user_name")
+
+	@Column(name = "user_name")
 	private String userName;
-	
-	@Column(name="user_psd")
+
+	@Column(name = "user_nickname")
+	private String userNickname;
+
+	@Column(name = "user_psd")
 	private String userPsd;
-	
-	@Column(name="is_official")
+
+	@Column(name = "is_official")
 	private boolean isOfficial;
 
 	public String getUserId() {
@@ -56,6 +59,13 @@ public class User {
 	public void setOfficial(boolean isOfficial) {
 		this.isOfficial = isOfficial;
 	}
-	
-	
+
+	public String getUserNickname() {
+		return userNickname;
+	}
+
+	public void setUserNickname(String userNickname) {
+		this.userNickname = userNickname;
+	}
+
 }
