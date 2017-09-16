@@ -32,4 +32,14 @@ public class UserServiceImpl implements IUserService {
 		userRepository.save(user);
 	}
 
+	@Override
+	public String userLogin(String name, String psd) {
+		User user = userRepository.findByUserNameAndUserPsd(name, psd);
+		if(user==null){
+			return "loginError";
+		}else{
+			return "loginSuccess";
+		}
+	}
+
 }

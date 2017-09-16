@@ -13,5 +13,15 @@ public interface IUserService {
 	 * 
 	 *            用户注册
 	 */
-	void registerUser(String name, String psd);
+	public void registerUser(String name, String psd);
+
+	/**
+	 * @param name
+	 * @param psd
+	 * @return String
+	 * 
+	 *         用户登陆
+	 * 
+	 */
+	public String userLogin(String name, String psd);
 }

@@ -51,4 +51,24 @@ public class UserController {
 		userService.registerUser(name, password);
 		return "redirect:/";
 	}
+	
+	
+	/**
+	 * @param mode
+	 * @param name
+	 * @param password
+	 * @return String
+	 * 
+	 * 用戶登陸
+	 */
+	@RequestMapping("/login")
+	public String login(Model mode, @RequestParam("inputEmail") String name,
+			@RequestParam("inputPassword") String password){
+		
+		String result = userService.userLogin(name, password);
+		if("loginSuccess".equals(result)){
+			return "index/index";
+		}else
+			return "redirect:/";
+	}
 }
