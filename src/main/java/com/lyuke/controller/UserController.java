@@ -43,7 +43,7 @@ public class UserController {
 	 * @param password
 	 * @return String
 	 * 
-	 *         注册功能
+	 *        注册功能
 	 */
 	@RequestMapping("/register")
 	public String register(Model mode, @RequestParam("inputEmail") String name,
