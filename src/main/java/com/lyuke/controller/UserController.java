@@ -1,16 +1,21 @@
 package com.lyuke.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import com.lyuke.service.IUserService;
 
 /**
  * @author Lyuke
  * @Date 2017-09-16 01:25
  */
 @Controller
-public class IndexController {
+public class UserController {
+	@Autowired
+	private IUserService userService;
 
 	/**
 	 * @return String
@@ -33,14 +38,17 @@ public class IndexController {
 	}
 
 	/**
+	 * @param mode
+	 * @param name
+	 * @param password
 	 * @return String
 	 * 
-	 *         注册
+	 *         注册功能
 	 */
 	@RequestMapping("/register")
 	public String register(Model mode, @RequestParam("inputEmail") String name,
 			@RequestParam("inputPassword") String password) {
-		System.err.println(mode.toString()+name+password);
+		userService.registerUser(name, password);
 		return "redirect:/";
 	}
 }

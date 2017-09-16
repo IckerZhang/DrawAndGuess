@@ -19,7 +19,7 @@ public class StringUtil {
 	}
 
 	/**
-	 * 生成8位数字ID作为游客用户名
+	 * 生成8位数字ID作为游客id
 	 * 
 	 * @return String
 	 */
