@@ -1,19 +1,16 @@
 package com.lyuke.domain;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 /**
  * @author Lyuke
@@ -22,7 +19,11 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "t_rooms")
 public class Room {
+	@Transient
+	private int MAX_USERS = 10;
 
+	@Transient
+	private int userCount = 0;
 	/**
 	 * 房间号
 	 */
@@ -48,15 +49,10 @@ public class Room {
 	@Column(name = "need_psd")
 	private boolean needPsd;
 
-	@OneToOne(cascade = CascadeType.REFRESH,targetEntity=User.class)
-    @JoinColumn(name="leader_id",referencedColumnName="users_id")
-	private User room_leader;
-
 	/**
 	 * 用户集合，单向一对多，room方为关系维护方
 	 */
-	@OneToMany(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
-	@JoinColumn(name = "room_id") // 增加一个外键列来实现一对多的单向关联
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<User> users = new ArrayList<User>();
 
 	public int getRoomId() {
@@ -91,20 +87,23 @@ public class Room {
 		this.needPsd = needPsd;
 	}
 
-	public User getRoom_leader() {
-		return room_leader;
-	}
-
-	public void setRoom_leader(User room_leader) {
-		this.room_leader = room_leader;
-	}
-
 	public List<User> getUsers() {
 		return users;
 	}
 
 	public void setUsers(List<User> users) {
 		this.users = users;
+	}
+
+	public int getMAX_USERS() {
+		return MAX_USERS;
+	}
+
+	public int getUserCount() {
+		if(users==null)
+			return 0;
+		else
+			return users.size();
 	}
 
 	@Override

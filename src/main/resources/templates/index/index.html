@@ -1,216 +1,102 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org" style="height:100%">
-<head>
-<title>大厅</title>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<div th:replace="commons/head :: common-ref"></div>
-</head>
-<body style="height:100%">
-	<div class="container-fluid" style="height:100%;background:#DDDDDD">
-		<div class="row" style="margin:10px">
-			<div class="col-md-12" style="border:1px solid #F00">
-				<img th:src="@{/image/123.jpg}" class="img-thumbnail" height="80" width="80" />
-				&nbsp&nbsp
-				<h3 style="display: inline-block"><span class="label label-default">用户名：方法</span></h3>
-				&nbsp&nbsp
-				<h3 style="display: inline-block"><span class="label label-default"  role="button" onclick="javascript:alert()">退出</span></h3>
+	xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Multiverse by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+	</head>
+	<body>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1><a href="home"><strong>HOME</strong></a></h1>
+						<nav>
+							<ul>
+								<li><a href="#footer" class="icon fa-info-circle">About</a></li>
+							</ul>
+						</nav>
+					</header>
+
+				<!-- 房间列表 -->
+					<div id="main">
+						<article class="thumb" th:each="room:${roomList}">
+							<a href="images/fulls/04.jpg" class="image"><img src="images/thumbs/04.jpg" alt="" /></a>
+							<p>
+								<ul class="list-group" th:each="player:${room.users}">
+  									<li class="list-group-item" th:text="${player.userNickname}"></li>
+								</ul>
+							</p>
+							<h2>
+								<span th:text="${room.roomId}"></span>号房间:
+								<span th:text="${room.userCount}"></span>/<span th:text="${room.MAX_USERS}"></span>
+							</h2>
+						</article>	
+					</div>
+                    <div class="copyrights">Collect from <a href="http://www.cssmoban.com/" >企业网站模板</a></div>
+
+				<!-- Footer -->
+					<footer id="footer" class="panel">
+						<div class="inner split">
+							<div>
+								<section>
+									<h2>Magna feugiat sed adipiscing</h2>
+									<p>Nulla consequat, ex ut suscipit rutrum, mi dolor tincidunt erat, et scelerisque turpis ipsum eget quis orci mattis aliquet. Maecenas fringilla et ante at lorem et ipsum. Dolor nulla eu bibendum sapien. Donec non pharetra dui. Nulla consequat, ex ut suscipit rutrum, mi dolor tincidunt erat, et scelerisque turpis ipsum.</p>
+								</section>
+								<section>
+									<h2>Follow me on ...</h2>
+									<ul class="icons">
+										<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+										<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+										<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+										<li><a href="#" class="icon fa-github"><span class="label">GitHub</span></a></li>
+										<li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li>
+										<li><a href="#" class="icon fa-linkedin"><span class="label">LinkedIn</span></a></li>
+									</ul>
+								</section>
+								<p class="copyright">
+									&copy; Unttled. More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a>.
+								</p>
+							</div>
+							<div>
+								<section>
+									<h2>Get in touch</h2>
+									<form method="post" action="#">
+										<div class="field half first">
+											<input type="text" name="name" id="name" placeholder="Name" />
+										</div>
+										<div class="field half">
+											<input type="text" name="email" id="email" placeholder="Email" />
+										</div>
+										<div class="field">
+											<textarea name="message" id="message" rows="4" placeholder="Message"></textarea>
+										</div>
+										<ul class="actions">
+											<li><input type="submit" value="Send" class="special" /></li>
+											<li><input type="reset" value="Reset" /></li>
+										</ul>
+									</form>
+								</section>
+							</div>
+						</div>
+					</footer>
+
 			</div>
-		
-		</div>
-		<div class="row" style="margin:10px">
-				<div class="col-md-3" style="border:1px solid black">
-					<div class="col-md-7" >
-						<h3>姓名</h3>
-						<img th:src="@{/image/123.jpg}" class="img-thumbnail" height="100" width="100" />
-						&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-						<h1 style="display: inline-block">房主</h1>
-					</div>
-					<div class="col-md-5" >
-						<br><br><br>
-						<button class="btn btn-default btn-lg" type="submit" style="vertical-align: middle">加入游戏</button>
-					</div>
-	
-					<div class="col-md-12">
-						<img th:src="@{/image/123.jpg}" class="img-thumbnail" height="40" width="40" />
-						<img th:src="@{/image/123.jpg}" class="img-thumbnail" height="40" width="40" />
-						<img th:src="@{/image/123.jpg}" class="img-thumbnail" height="40" width="40" />
-						<img th:src="@{/image/123.jpg}" class="img-thumbnail" height="40" width="40" />
-						<img th:src="@{/image/123.jpg}" class="img-thumbnail" height="40" width="40" />
-					</div>
-			</div>
-			<div class="col-md-3 col-md-offset-1" style="border:1px solid black">
-				<div class="col-md-7" >
-						<h3>姓名</h3>
-						<img th:src="@{/image/123.jpg}" class="img-thumbnail" height="100" width="100" />
-						&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-						<h1 style="display: inline-block">房主</h1>
-					</div>
-					<div class="col-md-5" >
-						<br><br><br>
-						<button class="btn btn-default btn-lg" type="submit" style="vertical-align: middle">加入游戏</button>
-					</div>
-	
-					<div class="col-md-12">
-						<img th:src="@{/image/123.jpg}" class="img-thumbnail" height="40" width="40" />
-						<img th:src="@{/image/123.jpg}" class="img-thumbnail" height="40" width="40" />
-						<img th:src="@{/image/123.jpg}" class="img-thumbnail" height="40" width="40" />
-						<img th:src="@{/image/123.jpg}" class="img-thumbnail" height="40" width="40" />
-						<img th:src="@{/image/123.jpg}" class="img-thumbnail" height="40" width="40" />
-					</div>
-			</div>
-			<div class="col-md-3 col-md-offset-1" style="border:1px solid black">
-				<div class="col-md-7" >
-						<h3>姓名</h3>
-						<img th:src="@{/image/123.jpg}" class="img-thumbnail" height="100" width="100" />
-						&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-						<h1 style="display: inline-block">房主</h1>
-					</div>
-					<div class="col-md-5" >
-						<br><br><br>
-						<button class="btn btn-default btn-lg" type="submit" style="vertical-align: middle">加入游戏</button>
-					</div>
-	
-					<div class="col-md-12">
-						<img th:src="@{/image/123.jpg}" class="img-thumbnail" height="40" width="40" />
-						<img th:src="@{/image/123.jpg}" class="img-thumbnail" height="40" width="40" />
-						<img th:src="@{/image/123.jpg}" class="img-thumbnail" height="40" width="40" />
-						<img th:src="@{/image/123.jpg}" class="img-thumbnail" height="40" width="40" />
-						<img th:src="@{/image/123.jpg}" class="img-thumbnail" height="40" width="40" />
-					</div>
-			</div>
-		</div>
-		<div class="row" style="margin:10px">
-				<div class="col-md-3" style="border:1px solid black">
-					<div class="col-md-7" >
-						<h3>姓名</h3>
-						<img th:src="@{/image/123.jpg}" class="img-thumbnail" height="100" width="100" />
-						&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-						<h1 style="display: inline-block">房主</h1>
-					</div>
-					<div class="col-md-5" >
-						<br><br><br>
-						<button class="btn btn-default btn-lg" type="submit" style="vertical-align: middle">加入游戏</button>
-					</div>
-	
-					<div class="col-md-12">
-						<img th:src="@{/image/123.jpg}" class="img-thumbnail" height="40" width="40" />
-						<img th:src="@{/image/123.jpg}" class="img-thumbnail" height="40" width="40" />
-						<img th:src="@{/image/123.jpg}" class="img-thumbnail" height="40" width="40" />
-						<img th:src="@{/image/123.jpg}" class="img-thumbnail" height="40" width="40" />
-						<img th:src="@{/image/123.jpg}" class="img-thumbnail" height="40" width="40" />
-					</div>
-			</div>
-			<div class="col-md-3 col-md-offset-1" style="border:1px solid black">
-				<div class="col-md-7" >
-						<h3>姓名</h3>
-						<img th:src="@{/image/123.jpg}" class="img-thumbnail" height="100" width="100" />
-						&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-						<h1 style="display: inline-block">房主</h1>
-					</div>
-					<div class="col-md-5" >
-						<br><br><br>
-						<button class="btn btn-default btn-lg" type="submit" style="vertical-align: middle">加入游戏</button>
-					</div>
-	
-					<div class="col-md-12">
-						<img th:src="@{/image/123.jpg}" class="img-thumbnail" height="40" width="40" />
-						<img th:src="@{/image/123.jpg}" class="img-thumbnail" height="40" width="40" />
-						<img th:src="@{/image/123.jpg}" class="img-thumbnail" height="40" width="40" />
-						<img th:src="@{/image/123.jpg}" class="img-thumbnail" height="40" width="40" />
-						<img th:src="@{/image/123.jpg}" class="img-thumbnail" height="40" width="40" />
-					</div>
-			</div>
-			<div class="col-md-3 col-md-offset-1" style="border:1px solid black">
-				<div class="col-md-7" >
-						<h3>姓名</h3>
-						<img th:src="@{/image/123.jpg}" class="img-thumbnail" height="100" width="100" />
-						&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-						<h1 style="display: inline-block">房主</h1>
-					</div>
-					<div class="col-md-5" >
-						<br><br><br>
-						<button class="btn btn-default btn-lg" type="submit" style="vertical-align: middle">加入游戏</button>
-					</div>
-	
-					<div class="col-md-12">
-						<img th:src="@{/image/123.jpg}" class="img-thumbnail" height="40" width="40" />
-						<img th:src="@{/image/123.jpg}" class="img-thumbnail" height="40" width="40" />
-						<img th:src="@{/image/123.jpg}" class="img-thumbnail" height="40" width="40" />
-						<img th:src="@{/image/123.jpg}" class="img-thumbnail" height="40" width="40" />
-						<img th:src="@{/image/123.jpg}" class="img-thumbnail" height="40" width="40" />
-					</div>
-			</div>
-		</div>
-		<div class="row" style="margin:10px">
-				<div class="col-md-3" style="border:1px solid black">
-					<div class="col-md-7" >
-						<h3>姓名</h3>
-						<img th:src="@{/image/123.jpg}" class="img-thumbnail" height="100" width="100" />
-						&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-						<h1 style="display: inline-block">房主</h1>
-					</div>
-					<div class="col-md-5" >
-						<br><br><br>
-						<button class="btn btn-default btn-lg" type="submit" style="vertical-align: middle">加入游戏</button>
-					</div>
-	
-					<div class="col-md-12">
-						<img th:src="@{/image/123.jpg}" class="img-thumbnail" height="40" width="40" />
-						<img th:src="@{/image/123.jpg}" class="img-thumbnail" height="40" width="40" />
-						<img th:src="@{/image/123.jpg}" class="img-thumbnail" height="40" width="40" />
-						<img th:src="@{/image/123.jpg}" class="img-thumbnail" height="40" width="40" />
-						<img th:src="@{/image/123.jpg}" class="img-thumbnail" height="40" width="40" />
-					</div>
-			</div>
-			<div class="col-md-3 col-md-offset-1" style="border:1px solid black">
-				<div class="col-md-7" >
-						<h3>姓名</h3>
-						<img th:src="@{/image/123.jpg}" class="img-thumbnail" height="100" width="100" />
-						&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-						<h1 style="display: inline-block">房主</h1>
-					</div>
-					<div class="col-md-5" >
-						<br><br><br>
-						<button class="btn btn-default btn-lg" type="submit" style="vertical-align: middle">加入游戏</button>
-					</div>
-	
-					<div class="col-md-12">
-						<img th:src="@{/image/123.jpg}" class="img-thumbnail" height="40" width="40" />
-						<img th:src="@{/image/123.jpg}" class="img-thumbnail" height="40" width="40" />
-						<img th:src="@{/image/123.jpg}" class="img-thumbnail" height="40" width="40" />
-						<img th:src="@{/image/123.jpg}" class="img-thumbnail" height="40" width="40" />
-						<img th:src="@{/image/123.jpg}" class="img-thumbnail" height="40" width="40" />
-					</div>
-			</div>
-			<div class="col-md-3 col-md-offset-1" style="border:1px solid black">
-				<div class="col-md-7" >
-						<h3>姓名</h3>
-						<img th:src="@{/image/123.jpg}" class="img-thumbnail" height="100" width="100" />
-						&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-						<h1 style="display: inline-block">房主</h1>
-					</div>
-					<div class="col-md-5" >
-						<br><br><br>
-						<button class="btn btn-default btn-lg" type="submit" style="vertical-align: middle">加入游戏</button>
-					</div>
-	
-					<div class="col-md-12">
-						<img th:src="@{/image/123.jpg}" class="img-thumbnail" height="40" width="40" />
-						<img th:src="@{/image/123.jpg}" class="img-thumbnail" height="40" width="40" />
-						<img th:src="@{/image/123.jpg}" class="img-thumbnail" height="40" width="40" />
-						<img th:src="@{/image/123.jpg}" class="img-thumbnail" height="40" width="40" />
-						<img th:src="@{/image/123.jpg}" class="img-thumbnail" height="40" width="40" />
-					</div>
-			</div>
-		</div>
-		<div class="col-md-12" style="border:1px solid black" style="height:90;margin:10px">
-			<button type="button" class="btn btn-info">（一般信息）Info</button>
-			<button type="button" class="btn btn-info">（一般信息）Info</button>
-			<button type="button" class="btn btn-info">（一般信息）Info</button>
-		</div>
-	</div>
-</body>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.poptrox.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
+
+	</body>
 </html>

@@ -1,11 +1,15 @@
 package com.lyuke.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.lyuke.domain.Room;
+import com.lyuke.service.IRoomService;
 import com.lyuke.service.IUserService;
 
 /**
@@ -16,6 +20,9 @@ import com.lyuke.service.IUserService;
 public class UserController {
 	@Autowired
 	private IUserService userService;
+
+	@Autowired
+	private IRoomService roomService;
 
 	/**
 	 * @return String
@@ -43,7 +50,7 @@ public class UserController {
 	 * @param password
 	 * @return String
 	 * 
-	 *        注册功能
+	 *         注册功能
 	 */
 	@RequestMapping("/register")
 	public String register(Model mode, @RequestParam("inputEmail") String name,
@@ -51,24 +58,35 @@ public class UserController {
 		userService.registerUser(name, password);
 		return "redirect:/";
 	}
-	
-	
+
 	/**
 	 * @param mode
 	 * @param name
 	 * @param password
 	 * @return String
 	 * 
-	 * 用戶登陸
+	 *         用戶登陸
 	 */
 	@RequestMapping("/login")
 	public String login(Model mode, @RequestParam("inputEmail") String name,
-			@RequestParam("inputPassword") String password){
-		
+			@RequestParam("inputPassword") String password) {
+
 		String result = userService.userLogin(name, password);
-		if("loginSuccess".equals(result)){
+		if ("loginSuccess".equals(result)) {
+			List<Room> list = roomService.getRooms();
+			mode.addAttribute("roomList", list);
 			return "index/index";
-		}else
+		} else
 			return "redirect:/";
+	}
+
+	/**
+	 * @return String
+	 * 
+	 *         回首页
+	 */
+	@RequestMapping("/home")
+	public String home() {
+		return "index/index";
 	}
 }
