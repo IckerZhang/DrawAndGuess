@@ -2,12 +2,14 @@ package com.lyuke.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -41,19 +43,20 @@ public class Room {
 	 * 房间是否激活，激活表示有人，未激活表示无人
 	 */
 	@Column(name = "is_active")
-	private boolean isActive;
+	private int isActive;
 
 	/**
 	 * 是否加密
 	 */
 	@Column(name = "need_psd")
-	private boolean needPsd;
+	private int needPsd;
 
 	/**
 	 * 用户集合，单向一对多，room方为关系维护方
 	 */
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private List<User> users = new ArrayList<User>();
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY,targetEntity=User.class)
+	@JoinColumn(name="room_id")
+	private Set<User> userSet;
 
 	public int getRoomId() {
 		return roomId;
@@ -71,28 +74,28 @@ public class Room {
 		this.gameState = gameState;
 	}
 
-	public boolean isActive() {
+	public int getIsActive() {
 		return isActive;
 	}
 
-	public void setActive(boolean isActive) {
+	public void setIsActive(int isActive) {
 		this.isActive = isActive;
 	}
 
-	public boolean isNeedPsd() {
+	public int getNeedPsd() {
 		return needPsd;
 	}
 
-	public void setNeedPsd(boolean needPsd) {
+	public void setNeedPsd(int needPsd) {
 		this.needPsd = needPsd;
 	}
 
-	public List<User> getUsers() {
-		return users;
+	public Set<User> getUsers() {
+		return userSet;
 	}
 
-	public void setUsers(List<User> users) {
-		this.users = users;
+	public void setUsers(Set<User> userSet) {
+		this.userSet = userSet;
 	}
 
 	public int getMAX_USERS() {
@@ -100,10 +103,10 @@ public class Room {
 	}
 
 	public int getUserCount() {
-		if(users==null)
+		if(userSet==null)
 			return 0;
 		else
-			return users.size();
+			return userSet.size();
 	}
 
 	@Override

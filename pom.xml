@@ -9,7 +9,7 @@
 	<packaging>jar</packaging>
 
 	<name>DrawAndGuess</name>
-	<description>Demo project for Spring Boot</description>
+	<description>DrawAndGuess game</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -62,7 +62,12 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		
+
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.4</version>
+		</dependency>
 	</dependencies>
 
 	<build>

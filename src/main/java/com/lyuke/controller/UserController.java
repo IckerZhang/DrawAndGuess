@@ -1,7 +1,10 @@
 package com.lyuke.controller;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Stream;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -88,5 +91,11 @@ public class UserController {
 	@RequestMapping("/home")
 	public String home() {
 		return "index/index";
+	}
+	
+	public static void main(String[] args) {
+		String s="1,2";
+		String sl=Optional.ofNullable(StringUtils.split(s,","));
+		System.out.println();
 	}
 }

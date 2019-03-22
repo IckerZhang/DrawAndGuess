@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org">
 	<head>
-		<title>Multiverse by HTML5 UP</title>
+		<title>hahahaha</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -28,7 +28,7 @@
 				<!-- 房间列表 -->
 					<div id="main">
 						<article class="thumb" th:each="room:${roomList}">
-							<a href="images/fulls/04.jpg" class="image"><img src="images/thumbs/04.jpg" alt="" /></a>
+							<a href="images/fulls/04.jpg" class="image" onclick="joinRoom()"><img src="images/thumbs/04.jpg" alt="" /></a>
 							<p>
 								<ul class="list-group" th:each="player:${room.users}">
   									<li class="list-group-item" th:text="${player.userNickname}"></li>
@@ -40,8 +40,7 @@
 							</h2>
 						</article>	
 					</div>
-                    <div class="copyrights">Collect from <a href="http://www.cssmoban.com/" >企业网站模板</a></div>
-
+                    
 				<!-- Footer -->
 					<footer id="footer" class="panel">
 						<div class="inner split">
@@ -97,6 +96,6 @@
 			<script src="assets/js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="assets/js/main.js"></script>
-
+			<script src="js/index/index.js" th:inline="javascript"></script>
 	</body>
 </html>

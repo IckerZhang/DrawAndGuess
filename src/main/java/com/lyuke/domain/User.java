@@ -1,7 +1,5 @@
 package com.lyuke.domain;
 
-import static org.hamcrest.CoreMatchers.instanceOf;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
